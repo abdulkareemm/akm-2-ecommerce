@@ -1,4 +1,4 @@
-import { DashboardCharts, Heading, LargeCards, SmallCards } from "@/app/_components/backoffice";
+import { CustomDataTable, DashboardCharts, Heading, LargeCards, SmallCards } from "@/app/_components/backoffice";
 import React from "react";
 
 const page = () => {
@@ -30,6 +30,7 @@ const page = () => {
       <LargeCards orderStatus={orderStatus} />
       <SmallCards />
       <DashboardCharts/>
+      <CustomDataTable/>
     </div>
   );
 };
