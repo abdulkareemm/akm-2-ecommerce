@@ -123,7 +123,7 @@ const CustomDataTable = () => {
                   Previous
                 </button>
               </li>
-              {Array.from({ length: 10 }, (_, index) => {
+              {Array.from({ length: 5 }, (_, index) => {
                 return (
                   <li key={index}>
                     <button
