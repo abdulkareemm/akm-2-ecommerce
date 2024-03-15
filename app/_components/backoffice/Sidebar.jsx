@@ -1,9 +1,61 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { Logo } from "./logo";
-import { ExternalLink, LayoutDashboard, LayoutGrid, Settings, Slack, Truck, User, UserSquare2, Users2, Warehouse } from "lucide-react";
+import {
+  ExternalLink,
+  LayoutGrid,
+  LogOut,
+  Settings,
+  Slack,
+  Truck,
+  User,
+  User2,
+  UserSquare2,
+  Users2,
+  Warehouse,
+} from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
+  const pathname = usePathname();
+  const sideBar = [
+    {
+      title: "Customers",
+      icon: Users2,
+      href: "/dashboard/customers",
+    },
+    {
+      title: "Markets",
+      icon: Warehouse,
+      href: "/dashboard/markets",
+    },
+    {
+      title: "Farmers",
+      icon: UserSquare2,
+      href: "/dashboard/farmers",
+    },
+    {
+      title: "Orders",
+      icon: Truck,
+      href: "/dashboard/orders",
+    },
+    {
+      title: "Our Staff",
+      icon: User,
+      href: "/dashboard/staff",
+    },
+    {
+      title: "Settings",
+      icon: Settings,
+      href: "/dashboard/settings",
+    },
+    {
+      title: "Online Store",
+      icon: ExternalLink,
+      href: "/dashboard/",
+    },
+  ];
   return (
     <div className="w-64 flex flex-col space-y-20 h-screen dark:bg-slate-700 dark:text-slate-50  fixed left-0 top-0  ">
       <Link href={"/"} className="w-[150px] h-[60px] py-8 px-6">
@@ -18,43 +70,46 @@ const Sidebar = () => {
       <div className="flex flex-col space-y-3">
         <Link
           href={"/dashboard"}
-          className="flex items-center space-x-3 border-l-4 border-green-500 py-3 px-6" 
+          className={`flex items-center space-x-3  py-3 px-6  font-semibold
+          ${
+            pathname === "/dashboard"
+              ? "text-green-600 border-l-4 border-green-600 "
+              : "hover:text-green-600/85"
+          }`}
         >
           <LayoutGrid />
           <span>Dashboard</span>
         </Link>
-        <Link href={"/"} className="py-3 px-6 flex items-center space-x-3">
+        <Link
+          href={"/"}
+          className="py-3 px-6 flex items-center space-x-3 hover:text-green-600/85 font-semibold"
+        >
           <Slack />
           <span>Catalogue</span>
         </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <Users2 />
-          <span>Customers</span>
-        </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <Truck />
-          <span>Orders</span>
-        </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <Warehouse />
-          <span>Markets</span>
-        </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <UserSquare2 />
-          <span>Farmers</span>
-        </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <User/>
-          <span>Our Staff</span>
-        </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <Settings/>
-          <span>Settings</span>
-        </Link>
-        <Link href={"/"} className="flex items-center space-x-3 py-3 px-6">
-          <ExternalLink/>
-          <span>Online Store</span>
-        </Link>
+        {sideBar.map((item, i) => {
+          const Icon = item.icon;
+          return (
+            <Link
+              href={item.href}
+              className={`flex items-center space-x-3  py-3 px-6  font-semibold ${
+                pathname === item.href
+                  ? "text-green-600 border-l-4 border-green-600 "
+                  : "hover:text-green-600/85"
+              }`}
+              key={i}
+            >
+              <Icon />
+              <span>{item.title}</span>
+            </Link>
+          );
+        })}
+        <div className="px-6 py-2">
+          <button className="flex items-center space-x-3  py-3 px-6 bg-green-600 font-semibold rounded-md ">
+            <LogOut />
+            <span>Logout</span>
+          </button>
+        </div>
       </div>
     </div>
   );
