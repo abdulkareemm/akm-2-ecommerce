@@ -7,7 +7,7 @@ export default function Layout({children}) {
       {/** sidebar */}
       <Sidebar />
       {/** main body */}
-      <div className="w-full ml-52">
+      <div className="w-full lg:ml-64 flex-grow min-h-screen">
         {/** header */}
         <Navbar/>
         {/** main */}
