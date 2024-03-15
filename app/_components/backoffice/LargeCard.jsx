@@ -5,7 +5,7 @@ const LargeCard = ({ order }) => {
     const {period,color,sales} = order
   return (
     <div
-      className={`rounded-lg text-white p-8 flex items-center flex-col gap-2 ${color}`}
+      className={`rounded-lg shadow-md shadow-black text-white p-8 flex items-center flex-col gap-2 ${color}`}
     >
       <Layers />
       <h4>{period}</h4>

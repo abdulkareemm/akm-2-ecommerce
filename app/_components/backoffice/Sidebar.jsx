@@ -3,7 +3,7 @@ import React from 'react'
 
 const Sidebar = () => {
   return (
-    <div className="w-52 flex flex-col space-y-6 h-screen bg-slate-700 text-slate-50 p-3 fixed left-0 top-0  ">
+    <div className="w-52 flex flex-col space-y-6 h-screen dark:bg-slate-700 dark:text-slate-50 p-3 fixed left-0 top-0  ">
       <Link href={"/"}>Logo</Link>
       <div className='flex flex-col'>
         <Link href={"/dashboard"}>Dashboard</Link>

@@ -24,20 +24,19 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ThemeSwitcherButton from "../ThemeSwitcherButton";
 
 const Navbar = () => {
   return (
     <div
-      className="flex items-center justify-between bg-slate-800 
+      className="flex items-center justify-between bg-white dark:bg-slate-800 
     text-slate-50 h-16 px-8 fixed w-full top-0 z-50 pr-[20rem]"
     >
       <button>
-        <AlignJustify />
+        <AlignJustify className="text-green-600"/>
       </button>
       <div className="flex space-x-3 items-center text-green-600">
-        <button>
-          <Sun />
-        </button>
+        <ThemeSwitcherButton/>
 
         <DropdownMenu>
           <DropdownMenuTrigger>

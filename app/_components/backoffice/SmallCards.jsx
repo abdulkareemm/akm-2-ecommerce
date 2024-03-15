@@ -1,4 +1,3 @@
-import React from 'react'
 import SmallCard from './SmallCard';
 import { CheckCheck, Loader2, RefreshCcw, ShoppingCart } from 'lucide-react';
 
@@ -31,7 +30,8 @@ const SmallCards = () => {
   ];
   
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-8
+    ">
       {orderStatus.map((order, ind) => {
         return <SmallCard order={...order} key={ind} />;
       })}

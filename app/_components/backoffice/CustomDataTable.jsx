@@ -10,15 +10,15 @@ const CustomDataTable = () => {
   //const totalePages = Math.ceil()
 
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Recent Orders</h2>
+    <div className="mt-8">
+      <h2 className="text-xl font-bold mb-4 px-4">Recent Orders</h2>
       {/** Table */}
 
       <div className="p-8">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
+              <tr className="bg-slate-300 dark:bg-slate-700">
                 <th scope="col" className="p-4">
                   <div className="flex items-center">
                     <input
@@ -102,14 +102,17 @@ const CustomDataTable = () => {
             className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
             aria-label="Table navigation"
           >
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+            <span
+              className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full 
+            md:inline md:w-auto p-4"
+            >
               Showing{" "}
-              <span className="font-semibold text-gray-50 dark:text-white">
+              <span className="font-semibold text-gray-700 dark:text-white">
                 {startIndex + 1}
                 {startIndex + 10 < data.length ? `-${startIndex + 10}` : ""}
               </span>{" "}
               of{" "}
-              <span className="font-semibold text-gray-50 dark:text-white">
+              <span className="font-semibold  text-gray-700 dark:text-white">
                 {data.length}
               </span>
             </span>
@@ -127,8 +130,8 @@ const CustomDataTable = () => {
                 return (
                   <li key={index}>
                     <button
-                    onClick={()=>setCurrentPage(index+1)}
-                    disabled={currentPage===index+1}
+                      onClick={() => setCurrentPage(index + 1)}
+                      disabled={currentPage === index + 1}
                       className="flex items-center justify-center px-3 h-8 leading-tight 
                     text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 
                     hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 

@@ -83,8 +83,8 @@ const WeeklySalesChart = () => {
   ];
   const [chartToDisplay, setChartToDisplay] = useState("sales");
   return (
-    <div className="bg-slate-700 p-8 rounded-lg">
-      <h2 className="text-xl font-bold mb-4">WeeklySalesChart</h2>
+    <div className="bg-slate-100 dark:bg-slate-700 shadow-md p-8 rounded-lg">
+      <h2 className="text-xl font-bold mb-4">Weekly Sales</h2>
       <div className="p-4">
         <div className="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
           <ul className="flex flex-wrap -mb-px">
