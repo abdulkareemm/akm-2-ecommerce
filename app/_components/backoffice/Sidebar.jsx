@@ -101,10 +101,15 @@ const Sidebar = ({ showSidebar }) => {
   ];
   return (
     <div
-      className={showSidebar ? `hidden lg:flex w-64  flex-col space-y-20 h-screen 
-      dark:bg-slate-700 dark:text-slate-50  fixed left-0 top-0`:`hidden`}
+      className={
+        showSidebar
+          ? `sm:block mt-16 sm:mt-0  shadow-md w-64 z-20  duration-300 ease-in-out  space-y-6 h-screen 
+      dark:bg-slate-700 dark:text-slate-50  fixed left-0 top-0`
+          : `hidden shadow-md w-64  space-y-6 h-screen duration-300 ease-in-out 
+      dark:bg-slate-700 dark:text-slate-50  fixed top-0`
+      }
     >
-      <Link href={"/"} className="w-[150px] h-[60px] py-8 px-6">
+      <Link href={"/"} className="flex w-[200px] h-[90px] py-8 px-6 mb-10">
         <Logo
           color={"#616364"}
           color1={"#616364"}
