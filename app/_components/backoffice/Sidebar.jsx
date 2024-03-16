@@ -1,11 +1,19 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Logo } from "./logo";
 import {
+  Boxes,
+  ChevronDown,
+  ChevronRight,
   ExternalLink,
   LayoutGrid,
+  LayoutList,
   LogOut,
+  Minus,
+  MonitorPlay,
+  ScanSearch,
+  SendToBack,
   Settings,
   Slack,
   Truck,
@@ -16,10 +24,17 @@ import {
   Warehouse,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
-const Sidebar = () => {
+const Sidebar = ({ showSidebar }) => {
   const pathname = usePathname();
-  const sideBar = [
+  const [isOpen, setIsOpen] = useState(false);
+
+  const sidebarLinks = [
     {
       title: "Customers",
       icon: Users2,
@@ -56,8 +71,39 @@ const Sidebar = () => {
       href: "/dashboard/",
     },
   ];
+
+  const catalogueLinks = [
+    {
+      title: "Products",
+      icon: Boxes,
+      href: "/dashboard/products",
+    },
+    {
+      title: "Categories",
+      icon: LayoutList,
+      href: "/dashboard/categories",
+    },
+    {
+      title: "Attributes",
+      icon: SendToBack,
+      href: "/dashboard/attributes",
+    },
+    {
+      title: "Coupons",
+      icon: ScanSearch,
+      href: "/dashboard/coupons",
+    },
+    {
+      title: "Store Sliders",
+      icon: MonitorPlay,
+      href: "/dashboard/store-sliders",
+    },
+  ];
   return (
-    <div className="w-64 flex flex-col space-y-20 h-screen dark:bg-slate-700 dark:text-slate-50  fixed left-0 top-0  ">
+    <div
+      className={showSidebar ? `hidden lg:flex w-64  flex-col space-y-20 h-screen 
+      dark:bg-slate-700 dark:text-slate-50  fixed left-0 top-0`:`hidden`}
+    >
       <Link href={"/"} className="w-[150px] h-[60px] py-8 px-6">
         <Logo
           color={"#616364"}
@@ -80,14 +126,48 @@ const Sidebar = () => {
           <LayoutGrid />
           <span>Dashboard</span>
         </Link>
-        <Link
-          href={"/"}
-          className="py-3 px-6 flex items-center space-x-3 hover:text-green-600/85 font-semibold"
+
+        <Collapsible
+          open={isOpen}
+          onOpenChange={setIsOpen}
+          className=" space-y-2 py-3 px-6"
         >
-          <Slack />
-          <span>Catalogue</span>
-        </Link>
-        {sideBar.map((item, i) => {
+          <div className="flex items-center justify-between space-x-4 ">
+            <CollapsibleTrigger asChild>
+              <button className=" flex items-center space-x-6 hover:text-green-600/85 font-semibold">
+                <div className="flex items-center space-x-3">
+                  <Slack />
+                  <span>Catalogue</span>
+                </div>
+                {isOpen ? (
+                  <ChevronDown onClick={() => setIsOpen(false)} />
+                ) : (
+                  <ChevronRight onClick={() => setIsOpen(true)} />
+                )}
+              </button>
+            </CollapsibleTrigger>
+          </div>
+          <CollapsibleContent className="text-sm bg-slate-100 dark:bg-slate-800 rounded-md py-1">
+            {catalogueLinks.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  href={item.href}
+                  key={i}
+                  className={`flex items-center space-x-3 px-6 py-1.5 font-semibold ${
+                    pathname === item.href
+                      ? "text-green-600 border-l-4 border-green-600 "
+                      : "hover:text-green-600/85"
+                  }`}
+                >
+                  <Icon />
+                  <span>{item.title}</span>
+                </Link>
+              );
+            })}
+          </CollapsibleContent>
+        </Collapsible>
+        {sidebarLinks.map((item, i) => {
           const Icon = item.icon;
           return (
             <Link

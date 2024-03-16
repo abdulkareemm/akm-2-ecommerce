@@ -26,17 +26,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ThemeSwitcherButton from "../ThemeSwitcherButton";
 
-const Navbar = () => {
+const Navbar = ({ setShowSidebar }) => {
   return (
     <div
       className="flex items-center justify-between bg-white dark:bg-slate-800 
     text-slate-50 h-16 px-8 fixed w-full top-0 z-50 pr-[20rem]"
     >
-      <button>
-        <AlignJustify className="text-green-600"/>
+      <button onClick={() => setShowSidebar((prev) => !prev)}>
+        <AlignJustify className="text-green-600" />
       </button>
       <div className="flex space-x-3 items-center text-green-600">
-        <ThemeSwitcherButton/>
+        <ThemeSwitcherButton />
 
         <DropdownMenu>
           <DropdownMenuTrigger>
@@ -62,12 +62,14 @@ const Navbar = () => {
                 <div className="flex flex-col space-y-2">
                   <p>Yellow Sweet Corn Stock out,</p>
                   <div className="flex items-center space-x-2">
-                    <p className="px-2 py-1 bg-red-700 text-white rounded-full">Stock Out</p>
+                    <p className="px-2 py-1 bg-red-700 text-white rounded-full">
+                      Stock Out
+                    </p>
                     <p>Dec 12 2021 - 12:40PM</p>
                   </div>
                 </div>
               </div>
-              <X className="cursor-pointer"/>
+              <X className="cursor-pointer" />
             </DropdownMenuItem>
             <DropdownMenuItem className="w-full px-4 py-2">
               <Settings className="mr-2 h-4 w-4" />
