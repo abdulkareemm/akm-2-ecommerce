@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import { Logo } from "./logo";
 import {
   Boxes,
+  Building2,
   ChevronDown,
   ChevronRight,
+  CircleDollarSign,
   ExternalLink,
   LayoutGrid,
   LayoutList,
   LogOut,
-  Minus,
   MonitorPlay,
   ScanSearch,
   SendToBack,
@@ -18,7 +19,6 @@ import {
   Slack,
   Truck,
   User,
-  User2,
   UserSquare2,
   Users2,
   Warehouse,
@@ -59,6 +59,17 @@ const Sidebar = ({ showSidebar }) => {
       title: "Our Staff",
       icon: User,
       href: "/dashboard/staff",
+    },
+
+    {
+      title: "AKM Community",
+      icon: Building2,
+      href: "/dashboard/community",
+    },
+    {
+      title: "Wallet",
+      icon: CircleDollarSign,
+      href: "/dashboard/wallet",
     },
     {
       title: "Settings",
@@ -103,10 +114,10 @@ const Sidebar = ({ showSidebar }) => {
     <div
       className={
         showSidebar
-          ? `sm:block mt-16 sm:mt-0  shadow-md w-64 z-20  duration-300 ease-in-out  space-y-6 h-screen 
-      dark:bg-slate-700 dark:text-slate-50  fixed left-0 top-0`
-          : `hidden shadow-md w-64  space-y-6 h-screen duration-300 ease-in-out 
-      dark:bg-slate-700 dark:text-slate-50  fixed top-0`
+          ? `sm:block mt-16 lg:mt-0  shadow-md w-56 z-20  duration-300 ease-in-out  space-y-6 h-screen 
+          dark:bg-slate-700 dark:text-slate-50 bg-white  fixed left-0 top-0 overflow-y-scroll`
+          : `hidden mt-16 lg:mt-0  shadow-md w-56  space-y-6 h-screen duration-300 ease-in-out 
+          dark:bg-slate-700 dark:text-slate-50 bg-white fixed top-0 overflow-y-scroll`
       }
     >
       <Link href={"/"} className="flex w-[200px] h-[90px] py-8 px-6 mb-10">

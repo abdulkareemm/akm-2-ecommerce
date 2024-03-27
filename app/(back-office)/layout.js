@@ -7,16 +7,22 @@ export default function Layout({children}) {
   return (
     <div className="flex gap-1">
       {/** sidebar */}
-      <Sidebar showSidebar={showSidebar}/>
+      <Sidebar showSidebar={showSidebar} />
       {/** main body */}
-      <div className="w-full lg:ml-64 flex-grow min-h-screen">
+      <div
+        className={
+          showSidebar
+            ? `w-full lg:ml-56 flex-grow min-h-screen`
+            : `w-full  flex-grow min-h-screen`
+        }
+      >
         {/** header */}
-        <Navbar setShowSidebar={setShowSidebar}/>
+        <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
         {/** main */}
-        <main className='p-8 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 min-h-screen mt-16'>{children}</main>
+        <main className="p-8 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-50 min-h-screen mt-16">
+          {children}
+        </main>
       </div>
-
-      
     </div>
   );
 }

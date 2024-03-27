@@ -26,11 +26,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ThemeSwitcherButton from "../ThemeSwitcherButton";
 
-const Navbar = ({ setShowSidebar }) => {
+const Navbar = ({ setShowSidebar, showSidebar }) => {
   return (
     <div
-      className="flex items-center justify-between bg-white dark:bg-slate-800 
-    text-slate-50 h-16 px-8 fixed w-full top-0 z-50 pr-[20rem]"
+      className={
+        showSidebar
+          ? `flex items-center justify-between bg-white dark:bg-slate-800 
+    text-slate-50 h-16 px-8 fixed w-full top-0 z-50 lg:pr-[20rem]`
+          : `flex items-center justify-between bg-white dark:bg-slate-800 
+    text-slate-50 h-16 px-8 fixed w-full top-0 z-50`
+      }
     >
       <button onClick={() => setShowSidebar((prev) => !prev)}>
         <AlignJustify className="text-green-600" />
